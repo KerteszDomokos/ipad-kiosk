@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Video Player</title>
+    <style>
+        body {
+            margin: 0;
+            background: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        #videoPlayer {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+        #videoSelector {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            z-index: 2;
+            color: #fff;
+            background: rgba(0,0,0,0.5);
+            border: none;
+            font-size: 20px;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <select id="videoSelector" onchange="changeVideo()">
+        <option value="./repules-rovid-v2.mp4">Video 1</option>
+        <option value="video2.mp4">Video 2</option>
+        <option value="video3.mp4">Video 3</option>
+        <option value="video4.mp4">Video 4</option>
+    </select>
+
+    <video id="videoPlayer" autoplay loop controls>
+        <source id="videoSource" src="./repules-rovid-v2.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <script>
+        function changeVideo() {
+            var videoPlayer = document.getElementById('videoPlayer');
+            var videoSource = document.getElementById('videoSource');
+            var videoSelector = document.getElementById('videoSelector');
+
+            videoSource.setAttribute('src', videoSelector.value);
+            videoPlayer.load();
+            videoPlayer.oncanplaythrough = function() {
+                videoPlayer.play();
+                if (videoPlayer.requestFullscreen) {
+                    videoPlayer.requestFullscreen();
+                } else if (videoPlayer.mozRequestFullScreen) { /* Firefox */
+                    videoPlayer.mozRequestFullScreen();
+                } else if (videoPlayer.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                    videoPlayer.webkitRequestFullscreen();
+                } else if (videoPlayer.msRequestFullscreen) { /* IE/Edge */
+                    videoPlayer.msRequestFullscreen();
+                }
+            }
+        }
+    </script>
+</body>
+</html>
