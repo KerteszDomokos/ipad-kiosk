@@ -1,0 +1,1 @@
+https://htmlpreview.github.io/?https://github.com/KerteszDomokos/ipad-kiosk/blob/main/index.html
