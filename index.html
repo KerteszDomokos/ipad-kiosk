@@ -32,37 +32,20 @@
 </head>
 <body>
     <select id="videoSelector" onchange="changeVideo()">
-        <option value="./repules-rovid-v2.mp4">Video 1</option>
-        <option value="video2.mp4">Video 2</option>
-        <option value="video3.mp4">Video 3</option>
-        <option value="video4.mp4">Video 4</option>
+        <option value="https://www.youtube.com/embed/2zTXyXRcggc?loop=1&rel=0">Video 1</option>
+        <option value="https://www.youtube.com/embed/3tmd-ClpJxA?loop=1&rel=0">Video 2</option>
+        <option value="https://www.youtube.com/embed/ktvTqknDobU?loop=1&rel=0">Video 3</option>
+        <option value="https://www.youtube.com/embed/YQHsXMglC9A?loop=1&rel=0">Video 4</option>
     </select>
 
-    <video id="videoPlayer" autoplay loop controls>
-        <source id="videoSource" src="./repules-rovid-v2.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
+    <iframe id="videoPlayer" src="https://www.youtube.com/embed/2zTXyXRcggc?loop=1&rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
     <script>
         function changeVideo() {
             var videoPlayer = document.getElementById('videoPlayer');
-            var videoSource = document.getElementById('videoSource');
             var videoSelector = document.getElementById('videoSelector');
 
-            videoSource.setAttribute('src', videoSelector.value);
-            videoPlayer.load();
-            videoPlayer.oncanplaythrough = function() {
-                videoPlayer.play();
-                if (videoPlayer.requestFullscreen) {
-                    videoPlayer.requestFullscreen();
-                } else if (videoPlayer.mozRequestFullScreen) { /* Firefox */
-                    videoPlayer.mozRequestFullScreen();
-                } else if (videoPlayer.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
-                    videoPlayer.webkitRequestFullscreen();
-                } else if (videoPlayer.msRequestFullscreen) { /* IE/Edge */
-                    videoPlayer.msRequestFullscreen();
-                }
-            }
+            videoPlayer.setAttribute('src', videoSelector.value);
         }
     </script>
 </body>
